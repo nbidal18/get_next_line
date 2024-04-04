@@ -6,7 +6,7 @@
 /*   By: nbidal <nbidal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 11:39:23 by nbidal            #+#    #+#             */
-/*   Updated: 2024/04/02 16:37:34 by nbidal           ###   ########.fr       */
+/*   Updated: 2024/04/04 13:32:12 by nbidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,30 @@
 #  define BUFFER_SIZE 10
 # endif
 
-# include <stdio.h> // contains read()
-# include <unistd.h> // contains printf()
+# include <stdio.h> // contains printf()
+# include <unistd.h> // contains read()
 # include <stdlib.h> // contains malloc()
 # include <fcntl.h> // contains open()
 
+// WRITE A README TO EXPLAIN AND REVISE IN FUTURE
+// * what each function does?
+// * maybe even a diagram showing the flow of the logic
+
 typedef struct list
 {
-	char		*str_buf;
-	struct list	*next_line;
+	char		*buf;
+	struct list	*next;
 }	t_list;
+
 char	*get_next_line(int fd);
-void	create_list(); //1
-int		found_new_line(); //2
-void	append(); //2
-t_list	*find_last_node(); //2
-char	*get_line(); //1
-int		len_to_new_line(); //2
-void	copy_str(); //2
-void	polish_list(); //1
-void	dealloc(); //1
+void	create_list(t_list **list, int fd);
+int		found_new_line(t_list *list);
+void	append(t_list **list, char *buf);
+t_list	*find_last_node(t_list *list);
+char	*get_line(t_list **list);
+int		len_to_new_line(t_list *list);
+void	copy_str(t_list *list, char *str);
+//void	polish_list(); //1
+//void	dealloc(); //1
 
 #endif
