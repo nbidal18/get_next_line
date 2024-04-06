@@ -6,7 +6,7 @@
 /*   By: nbidal <nbidal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 10:53:20 by nbidal            #+#    #+#             */
-/*   Updated: 2024/04/06 10:48:40 by nbidal           ###   ########.fr       */
+/*   Updated: 2024/04/06 11:04:29 by nbidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,12 @@ int	found_new_line(t_list *list)
 
 // everything above of here is utils
 
-char	*get_line(t_list **list)
+char	*get_line(t_list *list)
 {
 	int		str_len;
 	char	*next_str;
 
-	if (*list == NULL)
+	if (list == NULL)
 		return (NULL);
 	str_len = len_to_new_line(list);
 	next_str = malloc(str_len + 1 * sizeof(char));
@@ -160,15 +160,15 @@ char	*get_next_line(int fd)
 	return (next_line);
 }
 
-/*int	main(void)
+int	main(void)
 {
 	int			fd;
 	const char	*filename;
 	char		*next_line;
 
 	fd = open(filename, O_RDONLY);
-	filename = "hello.txt";
+	filename = "lorem.txt";
 	next_line = get_next_line(fd);
 	printf("%s", next_line);
 	return (0);
-}*/
+}

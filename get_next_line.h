@@ -6,7 +6,7 @@
 /*   By: nbidal <nbidal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 11:39:23 by nbidal            #+#    #+#             */
-/*   Updated: 2024/04/04 13:32:12 by nbidal           ###   ########.fr       */
+/*   Updated: 2024/04/06 11:01:27 by nbidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	create_list(t_list **list, int fd);
 int		found_new_line(t_list *list);
 void	append(t_list **list, char *buf);
 t_list	*find_last_node(t_list *list);
-char	*get_line(t_list **list);
+char	*get_line(t_list *list);
 int		len_to_new_line(t_list *list);
 void	copy_str(t_list *list, char *str);
 //void	polish_list(); //1
