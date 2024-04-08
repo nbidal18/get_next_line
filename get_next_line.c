@@ -6,7 +6,7 @@
 /*   By: nbidal <nbidal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 10:53:20 by nbidal            #+#    #+#             */
-/*   Updated: 2024/04/08 11:52:24 by nbidal           ###   ########.fr       */
+/*   Updated: 2024/04/08 20:41:34 by nbidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	polish_list(t_list **list)
 	k = 0;
 	while (last_node->buf[i] != '\n' && last_node->buf[i] != '\0')
 		i++;
-
 	while (last_node->buf[i] != '\0')
 		buf[k++] = last_node->buf[++i];
 	buf[k] = '\0';
