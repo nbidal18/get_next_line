@@ -6,7 +6,7 @@
 /*   By: nbidal <nbidal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 11:40:34 by nbidal            #+#    #+#             */
-/*   Updated: 2024/04/08 10:27:12 by nbidal           ###   ########.fr       */
+/*   Updated: 2024/04/08 13:16:44 by nbidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void	append(t_list **list, char *buf)
 		last_node->next = new_node;
 }
 
-// do I really need to check all of the nodes with list = list->next?
 int	found_new_line(t_list *list)
 {
 	int	i;
