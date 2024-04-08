@@ -6,7 +6,7 @@
 /*   By: nbidal <nbidal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 11:40:34 by nbidal            #+#    #+#             */
-/*   Updated: 2024/04/04 13:39:13 by nbidal           ###   ########.fr       */
+/*   Updated: 2024/04/08 09:10:16 by nbidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	len_to_new_line(t_list *list)
 				len++;
 				return (len);
 			}
+			i++;
 			len++;
 		}
 		list = list->next;
@@ -75,9 +76,7 @@ void	append(t_list **list, char *buf)
 	t_list	*new_node;
 	t_list	*last_node;
 
-	if (*list == NULL)
-		return ;
-	new_node = malloc(BUFFER_SIZE * sizeof(char));
+	new_node = malloc(sizeof(t_list));
 	if (new_node == NULL)
 		return ;
 	new_node->buf = buf;
@@ -85,7 +84,8 @@ void	append(t_list **list, char *buf)
 	last_node = find_last_node(*list);
 	if (last_node == NULL)
 		*list = new_node;
-	last_node->next = new_node;
+	else
+		last_node->next = new_node;
 }
 
 // do I really need to check all of the nodes with list = list->next?
@@ -96,7 +96,7 @@ int	found_new_line(t_list *list)
 	while (list != NULL)
 	{
 		i = 0;
-		while (list->buf[i] != '\0')
+		while (list->buf[i] != '\0' && i < BUFFER_SIZE)
 		{
 			if (list->buf[i] == '\n')
 				return (1);
