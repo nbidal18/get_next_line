@@ -6,7 +6,7 @@
 /*   By: nbidal <nbidal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 10:53:20 by nbidal            #+#    #+#             */
-/*   Updated: 2024/04/08 20:50:58 by nbidal           ###   ########.fr       */
+/*   Updated: 2024/04/09 12:35:32 by nbidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char	*get_next_line(int fd)
 	static t_list	*list;
 	char			*next_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &next_line, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	create_list(&list, fd);
 	if (list == NULL)
