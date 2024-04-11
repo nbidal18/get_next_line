@@ -6,7 +6,7 @@
 /*   By: nbidal <nbidal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 10:53:20 by nbidal            #+#    #+#             */
-/*   Updated: 2024/04/09 12:35:32 by nbidal           ###   ########.fr       */
+/*   Updated: 2024/04/11 09:31:38 by nbidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	dealloc(t_list **list, t_list *clean_node, char *buf)
 {
 	t_list	*tmp;
 
+	if (*list == NULL)
+		return ;
 	while (*list != NULL)
 	{
 		tmp = (*list)->next;
@@ -119,5 +121,6 @@ char	*get_next_line(int fd)
 	fd = open(filename, O_RDONLY);
 	next_line = get_next_line(fd);
 	printf("%s", next_line);
+	free(next_line);
 	return (0);
 }*/
