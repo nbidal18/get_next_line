@@ -6,7 +6,7 @@
 /*   By: nbidal <nbidal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 10:53:20 by nbidal            #+#    #+#             */
-/*   Updated: 2024/04/11 10:12:57 by nbidal           ###   ########.fr       */
+/*   Updated: 2024/04/11 10:36:27 by nbidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,21 @@ void	clean_list(t_list **list)
 char	*ft_get_line(t_list *list)
 {
 	int		str_len;
-	char	*next_str;
+	char	*str;
 
 	if (list == NULL)
 		return (NULL);
 	str_len = line_len(list);
-	next_str = malloc(str_len + 1 * sizeof(char));
-	if (next_str == NULL)
+	str = malloc(str_len + 1 * sizeof(char));
+	if (str == NULL)
 		return (NULL);
-	fill(list, next_str);
-	return (next_str);
+	fill(list, str);
+	return (str);
 }
 
 void	create(t_list **list, int fd)
 {
-	int		chars_read;
+	int		count_chars;
 	char	*buf;
 
 	while (search_new_line(*list) == 0)
@@ -85,13 +85,13 @@ void	create(t_list **list, int fd)
 		buf = malloc(BUFFER_SIZE + 1 * sizeof(char));
 		if (buf == NULL)
 			return ;
-		chars_read = read(fd, buf, BUFFER_SIZE);
-		if (chars_read <= 0)
+		count_chars = read(fd, buf, BUFFER_SIZE);
+		if (count_chars <= 0)
 		{
 			free(buf);
 			return ;
 		}
-		buf[chars_read] = '\0';
+		buf[count_chars] = '\0';
 		manage_list(list, buf);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nbidal <nbidal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 11:40:34 by nbidal            #+#    #+#             */
-/*   Updated: 2024/04/11 10:09:28 by nbidal           ###   ########.fr       */
+/*   Updated: 2024/04/11 10:37:54 by nbidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void	fill(t_list *list, char *str)
 
 int	line_len(t_list *list)
 {
-	int	len;
+	int	str_len;
 	int	i;
 
-	len = 0;
+	str_len = 0;
 	while (list != NULL)
 	{
 		i = 0;
@@ -51,15 +51,15 @@ int	line_len(t_list *list)
 		{
 			if (list->buf[i] == '\n')
 			{
-				len++;
-				return (len);
+				str_len++;
+				return (str_len);
 			}
 			i++;
-			len++;
+			str_len++;
 		}
 		list = list->next;
 	}
-	return (len);
+	return (str_len);
 }
 
 t_list	*get_last_node(t_list *list)
