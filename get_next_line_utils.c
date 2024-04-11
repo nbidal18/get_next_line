@@ -6,13 +6,13 @@
 /*   By: nbidal <nbidal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 11:40:34 by nbidal            #+#    #+#             */
-/*   Updated: 2024/04/09 14:07:52 by nbidal           ###   ########.fr       */
+/*   Updated: 2024/04/11 10:09:28 by nbidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	copy_str(t_list *list, char *str)
+void	fill(t_list *list, char *str)
 {
 	int	i;
 	int	k;
@@ -38,7 +38,7 @@ void	copy_str(t_list *list, char *str)
 	str[k] = '\0';
 }
 
-int	len_to_new_line(t_list *list)
+int	line_len(t_list *list)
 {
 	int	len;
 	int	i;
@@ -62,7 +62,7 @@ int	len_to_new_line(t_list *list)
 	return (len);
 }
 
-t_list	*find_last_node(t_list *list)
+t_list	*get_last_node(t_list *list)
 {
 	if (list == NULL)
 		return (NULL);
@@ -71,7 +71,7 @@ t_list	*find_last_node(t_list *list)
 	return (list);
 }
 
-void	append(t_list **list, char *buf)
+void	manage_list(t_list **list, char *buf)
 {
 	t_list	*new_node;
 	t_list	*last_node;
@@ -81,14 +81,14 @@ void	append(t_list **list, char *buf)
 		return ;
 	new_node->buf = buf;
 	new_node->next = NULL;
-	last_node = find_last_node(*list);
+	last_node = get_last_node(*list);
 	if (last_node == NULL)
 		*list = new_node;
 	else
 		last_node->next = new_node;
 }
 
-int	found_new_line(t_list *list)
+int	search_new_line(t_list *list)
 {
 	int	i;
 

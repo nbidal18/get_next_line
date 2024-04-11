@@ -6,7 +6,7 @@
 /*   By: nbidal <nbidal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 10:53:20 by nbidal            #+#    #+#             */
-/*   Updated: 2024/04/11 09:31:38 by nbidal           ###   ########.fr       */
+/*   Updated: 2024/04/11 10:12:57 by nbidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	dealloc(t_list **list, t_list *clean_node, char *buf)
 	}
 }
 
-void	polish_list(t_list **list)
+void	clean_list(t_list **list)
 {
 	t_list	*last_node;
 	t_list	*clean_node;
@@ -47,7 +47,7 @@ void	polish_list(t_list **list)
 	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (clean_node == NULL || buf == NULL)
 		return ;
-	last_node = find_last_node(*list);
+	last_node = get_last_node(*list);
 	i = 0;
 	k = 0;
 	while (last_node->buf[i] != '\n' && last_node->buf[i] != '\0')
@@ -67,20 +67,20 @@ char	*ft_get_line(t_list *list)
 
 	if (list == NULL)
 		return (NULL);
-	str_len = len_to_new_line(list);
+	str_len = line_len(list);
 	next_str = malloc(str_len + 1 * sizeof(char));
 	if (next_str == NULL)
 		return (NULL);
-	copy_str(list, next_str);
+	fill(list, next_str);
 	return (next_str);
 }
 
-void	create_list(t_list **list, int fd)
+void	create(t_list **list, int fd)
 {
 	int		chars_read;
 	char	*buf;
 
-	while (found_new_line(*list) == 0)
+	while (search_new_line(*list) == 0)
 	{
 		buf = malloc(BUFFER_SIZE + 1 * sizeof(char));
 		if (buf == NULL)
@@ -92,7 +92,7 @@ void	create_list(t_list **list, int fd)
 			return ;
 		}
 		buf[chars_read] = '\0';
-		append(list, buf);
+		manage_list(list, buf);
 	}
 }
 
@@ -103,11 +103,11 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	create_list(&list, fd);
+	create(&list, fd);
 	if (list == NULL)
 		return (NULL);
 	next_line = ft_get_line(list);
-	polish_list(&list);
+	clean_list(&list);
 	return (next_line);
 }
 
@@ -122,5 +122,6 @@ char	*get_next_line(int fd)
 	next_line = get_next_line(fd);
 	printf("%s", next_line);
 	free(next_line);
+	close(fd);
 	return (0);
 }*/
