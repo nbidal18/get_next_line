@@ -6,7 +6,7 @@
 /*   By: nbidal <nbidal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 10:53:20 by nbidal            #+#    #+#             */
-/*   Updated: 2024/04/11 10:36:27 by nbidal           ###   ########.fr       */
+/*   Updated: 2024/04/17 12:14:03 by nbidal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ void	create(t_list **list, int fd)
 		if (buf == NULL)
 			return ;
 		count_chars = read(fd, buf, BUFFER_SIZE);
+		if (buf[0] == '\0')
+		{
+			free(buf);
+			return ;
+		}
 		if (count_chars <= 0)
 		{
 			free(buf);
