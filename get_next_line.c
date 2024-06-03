@@ -112,17 +112,22 @@ char	*get_next_line(int fd)
 	return (next_line);
 }
 
-/*int	main(void)
+int	main(void)
 {
 	int			fd;
 	const char	*filename;
 	char		*next_line;
+	int			i;
 
 	filename = "lorem.txt";
 	fd = open(filename, O_RDONLY);
-	next_line = get_next_line(fd);
-	printf("%s", next_line);
+	i = 10; // How many times it keeps reading each times it reaches a new line
+	while (i-- >= 0)
+	{
+		next_line = get_next_line(fd);
+		printf("%s", next_line);
+	}
 	free(next_line);
 	close(fd);
 	return (0);
-}*/
+}
