@@ -10,4 +10,4 @@
 4. Compile the project using `cc get_next_line.h get_next_line.c get_next_line_utils.c`.
 
 ## Grade
-I didn't do the Bonus part so I got **100**.
+I only did the Mandatory part so I got **100**.
